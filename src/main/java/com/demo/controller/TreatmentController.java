@@ -40,7 +40,6 @@ import org.springframework.web.servlet.ModelAndView;
  *         <p/>
  */
 @Controller
-@RequestMapping("/demo/v1")
 @Api(tags = "Demo", description = "demo services")
 public class TreatmentController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TreatmentController.class);
