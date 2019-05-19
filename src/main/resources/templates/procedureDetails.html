@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+	<div>
+		<table class="box-table-a">
+			<caption>
+				<h3>Procedure Details</h3>
+			</caption>
+			<thead>
+				<tr>
+					<th scope="col">Procedure Id</th>
+					<th scope="col">Description</th>
+					<th scope="col">Start Date</th>
+					<th scope="col">End Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-th-each="stu : ${study}">
+					<td data-th-text="${stu.id}">1</td>
+					<td data-th-text="${stu.description}">1</td>
+					<td data-th-text="${stu.plannedStartTime}">1</td>
+					<td data-th-text="${stu.estimatedEndTime}">1</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<table class="box-table-a">
+			<caption>
+				<h3>Patient Details</h3>
+			</caption>
+			<thead>
+				<tr>
+					<th scope="col">Patient ID</th>
+					<th scope="col">Name</th>
+					<th scope="col">Sex</th>
+					<th scope="col">Date Of Birth</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-th-each="pat : ${patientDO}">
+					<td data-th-text="${pat.id}">1</td>
+					<td data-th-text="${pat.name}">1</td>
+					<td data-th-text="${pat.sex}">1</td>
+					<td data-th-text="${pat.dateOfBirth}">1</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

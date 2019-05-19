@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+	<div class="container my-5">
+		<div class="row">
+			<div class="col-md-6">
+				<form id="patientForm" role="form" th:object="${patientDO}"
+					th:action="@{/addPatient}" method="post">
+					<h3>Add patient</h3>
+					<table class="box-table-a">
+						<tbody>
+							<tr>
+								<td>Name*</td>
+								<td><input type="text" data-th-value="*{name}"
+									data-th-field="*{name}" /></td>
+								<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
+							</tr>
+							<tr>
+								<td>Gender</td>
+								<td><input type="text" data-th-value="*{sex}"
+									data-th-field="*{sex}" /></td>
+							</tr>
+							<tr>
+								<td>Date Of Birth</td>
+								<td><input type="date" data-th-value="*{dateOfBirth}"
+									data-th-field="*{dateOfBirth}" /></td>
+							</tr>
+							<tr >
+								<td width="100">
+									<h5>Add Doctor </h5>
+								</td>
+							</tr>
+							<tr>
+								<td>Doctor Name</td>
+								<td><input type="text"
+									data-th-value="*{doctorDetails.name}"
+									data-th-field="*{doctorDetails.name}" /></td>
+							</tr>
+							<tr >
+								<td width="100">
+									<h5>Add Room </h5>
+								</td>
+							</tr>
+							<tr>
+								<td>Room Name</td>
+								<td><input type="text" data-th-value="*{roomDetails.name}"
+									data-th-field="*{roomDetails.name}" /></td>
+							</tr>
+							<tr>
+								<td>
+									<button type="submit" class="btn btn-primary" name="action"
+										value="save">SAVE</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

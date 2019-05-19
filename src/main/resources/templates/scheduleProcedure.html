@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+	<div class="container my-5">
+		<div class="row">
+			<div class="col-md-6">
+					<form id="procedureForm" role="form" th:object="${studyDO}"
+					th:action="@{/scheduleProcedure}" method="post">
+					<h3>Schedule procedure</h3>
+					<table class="box-table-a">
+						<tbody>
+							<tr>
+								<td>Patient Id*</td>
+								<td><input type="text" data-th-value="*{patientDetails.id}"
+									data-th-field="*{patientDetails.id}" /></td>
+									<td th:if="${#fields.hasErrors('patientDetails.id')}" th:color=red
+									th:errors="*{patientDetails.id}">Description
+							</tr>
+							<tr>
+								<td>Description*</td>
+								<td><input type="text" data-th-value="*{description}"
+									data-th-field="*{description}" /></td>
+								<td th:if="${#fields.hasErrors('description')}" th:color=red
+									th:errors="*{description}">Description
+							</tr>
+							<tr>
+								<td>Status*</td>
+								<td><select data-th-field="*{state}">
+										<option
+											th:each="state : ${T(com.demo.domainobject.StudyDO.State).values()}"
+											th:value="${state}"
+											th:text="${state}"></option>
+								</select></td>
+							</tr>
+							<tr>
+								<td>Start date</td>
+								<td><input type="date" data-th-value="*{plannedStartTime}"
+									data-th-field="*{plannedStartTime}" /></td>
+									<td th:if="${#fields.hasErrors('plannedStartTime')}"
+									th:errors="*{plannedStartTime}">Description
+							</tr>
+							<tr>
+								<td>End date</td>
+								<td><input type="date" data-th-value="*{estimatedEndTime}"
+									data-th-field="*{estimatedEndTime}" /></td>
+							</tr>
+							<tr>
+								<td>
+									<button type="submit" class="btn btn-primary" name="action"
+										value="save">save</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
